@@ -59,7 +59,7 @@ rule uri = parse
 ([^':''/''?''#']+ as scheme ':') ?
 ("//" ([^'/''?''#']* as authority)) ?
 ([^'?''#']* as path)
-{ 
+{
   let open Import in
   let scheme = scheme |> Option.value ~default:"file" in
   let authority =
@@ -72,7 +72,7 @@ rule uri = parse
       String.add_prefix_if_not_exists path ~prefix:"/"
     | _ -> path
   in
-  { scheme; authority; path; } 
+  { scheme; authority; path; }
 }
 
 and path = parse
